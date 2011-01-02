@@ -22,13 +22,13 @@ For unit testing the webmock Gem is also used.
 How to Use
 ----------
 
-  require 'autodiscover'
-
-  credentials = Autodiscover::Credentials.new('<e-mail address>', '<password>')
-  client = Autodiscover::Client.new
-  services = client.get_services(credentials)
-  ews_url = services.ews_url
-  ttl = services.ttl
+    require 'autodiscover'
+    
+    credentials = Autodiscover::Credentials.new('<e-mail address>', '<password>')
+    client = Autodiscover::Client.new
+    services = client.get_services(credentials)
+    ews_url = services.ews_url
+    ttl = services.ttl
 
 Options
 -------
@@ -37,17 +37,17 @@ Options
 
 For debugging, we extend the use of the debug_dev option in the HTTPClient library.
 
-  debug_file = File.open('<filename path>', 'w')
-  credentials = Autodiscover::Credentials.new('<e-mail address>', '<password>')
-  client = Autodiscover::Client.new(:debug_dev => debug_file)
-  services = client.get_services(credentials)
-  debug_file.close
+    debug_file = File.open('<filename path>', 'w')
+    credentials = Autodiscover::Credentials.new('<e-mail address>', '<password>')
+    client = Autodiscover::Client.new(:debug_dev => debug_file)
+    services = client.get_services(credentials)
+    debug_file.close
 
 ### Connection Timeouts
 
 To adjust the connection timeout values used when searching for Autodiscover server endpoints:
 
-  client = Autodiscover::Client.new(:connect_timeout => 5)
+    client = Autodiscover::Client.new(:connect_timeout => 5)
 
 The units are seconds.
 
@@ -56,14 +56,14 @@ Installation
 
 ### Configuring a Rails App to use the latest GitHub master version
 
-	gem 'autodiscover', :git => 'git://github.com/wimm/autodiscover.git'
+	  gem 'autodiscover', :git => 'git://github.com/wimm/autodiscover.git'
 
 ### To install the latest development version from the GitHub master
 
-	git clone http://github.com/wimm/autodiscover.git
-	cd autodiscover
-	gem build autodiscover.gemspec
-	sudo gem install autodiscover-<version>.gem
+	  git clone http://github.com/wimm/autodiscover.git
+	  cd autodiscover
+	  gem build autodiscover.gemspec
+	  sudo gem install autodiscover-<version>.gem
 
 Bugs and Issues
 ---------------
