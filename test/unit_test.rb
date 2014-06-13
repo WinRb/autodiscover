@@ -58,7 +58,7 @@ END
 
 class AutodiscoverResponseTest < Test::Unit::TestCase
   def setup
-    @credentials = Autodiscover::Credentials.new('spiff@spacecommand.sol', 'hobbes')
+    @credentials = Autodiscover::Credentials.new('spiff@spacecommand.sol', 'spiff@spacecommand.sol', 'hobbes')
     @client = Autodiscover::Client.new
     WebMock::stub_request(:any, /spacecommand.sol/).to_timeout
   end
@@ -140,7 +140,7 @@ class AutodiscoverResponseTest < Test::Unit::TestCase
       :status => 200, 
       :headers => { 'Content-Length' => REDIRECTURL_AUTODISCOVER_RESPONSE.size }
     )
-    WebMock::stub_request(:post, 'https://calvin%40spacecommand.sol:hobbes@spacecommand.sol/autodiscover/autodiscover.xml').to_return(
+    WebMock::stub_request(:post, 'https://spiff%40spacecommand.sol:hobbes@spacecommand.sol/autodiscover/autodiscover.xml').to_return(
       :body => SETTINGS_AUTODISCOVER_RESPONSE,
       :status => 200, 
       :headers => { 'Content-Length' => SETTINGS_AUTODISCOVER_RESPONSE.size }

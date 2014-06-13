@@ -25,27 +25,19 @@ module Autodiscover
   # A Credentials object is used to determine the autodiscover service
   # endpoint and to authenticate to it.
   class Credentials
-    # E-mail address for the user.
-    attr_reader :email
-
-    # Password for the account.
+    attr_accessor :email
+    attr_reader :username
     attr_reader :password
 
-    # SMTP domain determined by the e-mail address.
-    attr_reader :smtp_domain  #:nodoc:
-
-    def initialize(address, password)
-      self.email = address
+    def initialize(email, username, password)
+      @email = email
+      @username = username
       @password = password
     end
 
-    def email=(address)  #:nodoc:
-      raise ArgumentError, "No email address specified" unless address
-      @smtp_domain = address[/^.+@(.*)$/, 1]
-      unless @smtp_domain =~ /.+\..+/
-        raise ArgumentError, "Invalid email address: #{address}"
-      end
-      @email = address
+    # SMTP domain determined by the e-mail address.
+    def smtp_domain
+      email[/^.+@(.*)$/, 1]
     end
   end
 end
