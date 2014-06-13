@@ -91,7 +91,7 @@ module Autodiscover
     end
 
     def try_secure_url(url, credentials, req_body)
-      @http.set_auth(url, credentials.email, credentials.password)
+      @http.set_auth(url, credentials.username, credentials.password)
 
       response = @http.post(url, req_body, {'Content-Type' => 'text/xml; charset=utf-8'}) rescue nil
       return nil unless response
