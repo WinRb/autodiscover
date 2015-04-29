@@ -1,21 +1,28 @@
-version = File.read(File.expand_path("../VERSION", __FILE__)).strip
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'autodiscover/version'
 
 Gem::Specification.new do |s|
-  s.name    = 'autodiscover'
-  s.version = version
-  s.summary = "Ruby client for Microsoft's Autodiscover Service"
-  s.description = 'Library to find the Autodiscover server and to get from it the URLs and settings needed to access Web services available from Exchange servers.'
-  s.required_ruby_version = '>= 1.8.7'
+  s.name          = 'autodiscover'
+  s.version       = Autodiscover::VERSION
+  s.summary       = "Ruby client for Microsoft's Autodiscover Service"
+  s.description   = "The Autodiscover Service provides information about a Microsoft Exchange environment such as service URLs, versions and many other attributes."
+  s.required_ruby_version = '>= 2.0.0'
 
-  s.author   = 'David King'
-  s.email    = 'dking@bestinclass.com'
-  s.homepage = 'http://github.com/wimm/autodiscover'
+  s.authors       = ["David King", "Dan Wanek"]
+  s.email         = ["dking@bestinclass.com", "dan.wanek@gmail.com"]
+  s.homepage      = 'http://github.com/WinRb/autodiscover'
 
-  s.files = Dir['CHANGELOG', 'README.md', 'MIT-LICENSE', 'lib/**/*']
-  s.extra_rdoc_files = ['MIT-LICENSE', 'README.md']
-  s.test_files = Dir['test/*.rb']
+  s.files         = `git ls-files -z`.split("\x0")
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
+  s.require_paths = ["lib"]
 
-  s.add_runtime_dependency  'nokogiri'
-  s.add_runtime_dependency  'httpclient'
-  s.add_development_dependency 'webmock'
+  s.add_runtime_dependency  "nokogiri"
+  s.add_runtime_dependency  "httpclient"
+
+  s.add_development_dependency "webmock"
+  s.add_development_dependency "bundler"
+  s.add_development_dependency "rake"
+  s.add_development_dependency "pry"
 end

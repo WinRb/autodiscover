@@ -21,6 +21,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
 
+require "autodiscover/version"
 require 'autodiscover/client'
 require 'autodiscover/credentials'
 require 'autodiscover/services'
