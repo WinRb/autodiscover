@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version       = Autodiscover::VERSION
   s.summary       = "Ruby client for Microsoft's Autodiscover Service"
   s.description   = "The Autodiscover Service provides information about a Microsoft Exchange environment such as service URLs, versions and many other attributes."
-  s.required_ruby_version = '>= 2.0.0'
+  s.required_ruby_version = '>= 2.1.0'
 
   s.authors       = ["David King", "Dan Wanek"]
   s.email         = ["dking@bestinclass.com", "dan.wanek@gmail.com"]
@@ -21,7 +21,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency  "nokogiri"
   s.add_runtime_dependency  "httpclient"
 
-  s.add_development_dependency "webmock"
+  s.add_development_dependency "minitest", "~> 5.6.0"
+  s.add_development_dependency "mocha", "~> 1.1.0"
   s.add_development_dependency "bundler"
   s.add_development_dependency "rake"
   s.add_development_dependency "pry"
