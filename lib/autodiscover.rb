@@ -1,5 +1,6 @@
 require "autodiscover/version"
 require "nokogiri"
+require "nori"
 require "httpclient"
 
 module Autodiscover

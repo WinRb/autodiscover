@@ -1,22 +1,31 @@
 module Autodiscover
   class PoxResponse
 
-    RESPONSE_SCHEMA = "http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a"
-
-    attr_reader :xml
+    attr_reader :response
 
     def initialize(response)
-      @xml = Nokogiri::XML(response)
+      raise ArgumentError, "Response must be an XML string" if(response.nil? || response.empty?)
+      @response = Nori.new(parser: :nokogiri).parse(response)["Autodiscover"]["Response"]
     end
 
     def exchange_version
-      hexver = xml.xpath("//s:ServerVersion", s: RESPONSE_SCHEMA)[0].text
-      ServerVersionParser.new(hexver).exchange_version
+      ServerVersionParser.new(exch_proto["ServerVersion"]).exchange_version
     end
 
     def ews_url
-      v = xml.xpath("//s:EwsUrl[../s:Type='EXPR']", s: RESPONSE_SCHEMA).text
-      v.empty? ? nil : v
+      expr_proto["EwsUrl"]
+    end
+
+    def exch_proto
+      @exch_proto ||= (response["Account"]["Protocol"].select{|p| p["Type"] == "EXCH"}.first || {})
+    end
+
+    def expr_proto
+      @expr_proto ||= (response["Account"]["Protocol"].select{|p| p["Type"] == "EXPR"}.first || {})
+    end
+
+    def web_proto
+      @web_proto ||= (response["Account"]["Protocol"].select{|p| p["Type"] == "WEB"}.first || {})
     end
 
   end
