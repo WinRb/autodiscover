@@ -19,7 +19,7 @@ describe Autodiscover::PoxRequest do
     http.expects(:post).with(
       "https://example.local/autodiscover/autodiscover.xml", request_body,
       {'Content-Type' => 'text/xml; charset=utf-8'}
-    ).returns(OpenStruct.new({status: 200, body: "<test></test>"}))
+    ).returns(OpenStruct.new({status: 200, body: "<Autodiscover><Response><test></test></Response></Autodiscover>"}))
 
     inst = _class.new(client)
     _(inst.autodiscover).must_be_instance_of(Autodiscover::PoxResponse)
