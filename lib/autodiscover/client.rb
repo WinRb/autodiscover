@@ -19,10 +19,11 @@ module Autodiscover
     end
 
     # @param type [Symbol] The type of response. Right now this is just :pox
-    def autodiscover(type: :pox)
+    # @param [Hash] **options
+    def autodiscover(type: :pox, **options)
       case type
       when :pox
-        PoxRequest.new(self).autodiscover
+        PoxRequest.new(self, **options).autodiscover
       else
         raise Autodiscover::ArgumentError, "Not a valid autodiscover type (#{type})."
       end

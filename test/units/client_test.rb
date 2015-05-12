@@ -22,7 +22,7 @@ describe Autodiscover::Client do
       inst = _class.new(email: "test@example.local", password: "test")
       pox_request = mock("pox")
       pox_request.expects(:autodiscover)
-      Autodiscover::PoxRequest.expects(:new).with(inst).returns(pox_request)
+      Autodiscover::PoxRequest.expects(:new).with(inst,{}).returns(pox_request)
       inst.autodiscover
     end
 

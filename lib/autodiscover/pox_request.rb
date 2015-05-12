@@ -1,13 +1,18 @@
 module Autodiscover
   class PoxRequest
 
-    attr_reader :client
+    attr_reader :client, :options
 
     # @param client [Autodiscover::Client]
-    def initialize(client)
+    # @param [Hash] **options
+    # @option **options [Boolean] :ignore_ssl_errors Whether to keep trying if
+    #   there are SSL errors
+    def initialize(client, **options)
       @client = client
+      @options = options
     end
 
+    # @return [Autodiscover::PoxResponse, nil]
     def autodiscover
       available_urls.each do |url|
         begin
@@ -15,6 +20,8 @@ module Autodiscover
           return PoxResponse.new(response.body) if good_response?(response)
         rescue Errno::ENETUNREACH
           next
+        rescue OpenSSL::SSL::SSLError
+          options[:ignore_ssl_errors] ? next : raise
         end
       end
     end

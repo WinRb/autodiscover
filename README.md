@@ -42,7 +42,7 @@ data.response
 Options
 -------
 
-Besides `:email` and `:password`, `Autodiscover::Client` can take a few other options.
+Besides `:email` and `:password`, `Autodiscover::Client` can take a few other options as can the #autodiscover method.
 
 Examples:
 
@@ -52,6 +52,9 @@ client = Autodiscover::Client.new(email: "blumbergh@initech.local", password: "t
 
 # Override the domain
 client = Autodiscover::Client.new(email: "blumbergh@initech.local", password: "tps_eq_awesome", domain: "tpsreports.local")
+
+# Ignore SSL Errors
+client.autodiscover(ignore_ssl_errors: true)
 ```
 
 
