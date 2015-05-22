@@ -1,5 +1,6 @@
 module Autodiscover
   class PoxRequest
+    include Autodiscover
 
     attr_reader :client, :options
 
@@ -37,8 +38,10 @@ module Autodiscover
     def available_urls(&block)
       return to_enum(__method__) unless block_given?
       formatted_https_urls.each {|url|
+        logger.debug "Yielding HTTPS Url #{url}"
         yield url
       }
+      logger.debug "Yielding HTTP Redirected Url #{redirected_http_url}"
       yield redirected_http_url
     end
 
