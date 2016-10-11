@@ -6,6 +6,7 @@ require 'autodiscover/version'
 Gem::Specification.new do |s|
   s.name          = 'autodiscover'
   s.version       = Autodiscover::VERSION
+  s.license       = 'MIT'
   s.summary       = "Ruby client for Microsoft's Autodiscover Service"
   s.description   = "The Autodiscover Service provides information about a Microsoft Exchange environment such as service URLs, versions and many other attributes."
   s.required_ruby_version = '>= 2.1.0'
