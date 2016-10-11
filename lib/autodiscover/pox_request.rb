@@ -19,7 +19,7 @@ module Autodiscover
         begin
           response = client.http.post(url, request_body, {'Content-Type' => 'text/xml; charset=utf-8'})
           return PoxResponse.new(response.body) if good_response?(response)
-        rescue Errno::ENETUNREACH, Errno::ECONNREFUSED
+        rescue Errno::ENETUNREACH, Errno::ECONNREFUSED, HTTPClient::ConnectTimeoutError
           next
         rescue OpenSSL::SSL::SSLError
           options[:ignore_ssl_errors] ? next : raise

@@ -10,10 +10,11 @@ module Autodiscover
     #   with something other than the e-mail. For instance DOMAIN\user
     # @param domain [String] An optional domain to provide as an override for
     #   the one parsed from the e-mail.
-    def initialize(email:, password:, username: nil, domain: nil)
+    def initialize(email:, password:, username: nil, domain: nil, connect_timeout: nil)
       @email = email
       @domain = domain || @email.split("@").last
       @http = HTTPClient.new
+      @http.connect_timeout = connect_timeout if connect_timeout
       @username = username || email
       @http.set_auth(nil, @username, password)
     end
