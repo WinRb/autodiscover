@@ -53,6 +53,9 @@ client = Autodiscover::Client.new(email: "blumbergh@initech.local", password: "t
 # Override the domain
 client = Autodiscover::Client.new(email: "blumbergh@initech.local", password: "tps_eq_awesome", domain: "tpsreports.local")
 
+# Set a custom connection timeout
+client = Autodiscover::Client.new(email: "blumbergh@initech.local", password: "tps_eq_awesome", connect_timeout: 5)
+
 # Ignore SSL Errors
 client.autodiscover(ignore_ssl_errors: true)
 ```
