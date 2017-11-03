@@ -16,20 +16,12 @@ module Autodiscover
     # @return [Autodiscover::PoxResponse, nil]
     def autodiscover
       available_urls.each do |url|
-        begin
-          response = client.http.post(url, request_body, {'Content-Type' => 'text/xml; charset=utf-8'})
-          return PoxResponse.new(response.body) if good_response?(response)
-        rescue SocketError, Errno::EHOSTUNREACH, Errno::ENETUNREACH, Errno::ECONNREFUSED, HTTPClient::ConnectTimeoutError
-          next
-        rescue OpenSSL::SSL::SSLError
-          options[:ignore_ssl_errors] ? next : raise
-        end
+        response = client.http.post(url, request_body, {'Content-Type' => 'text/xml; charset=utf-8'})
+        return PoxResponse.new(response.body) if good_response?(response)
       end
     end
 
-
     private
-
 
     def good_response?(response)
       response.status == 200
@@ -39,10 +31,14 @@ module Autodiscover
       return to_enum(__method__) unless block_given?
       formatted_https_urls.each {|url|
         logger.debug "Yielding HTTPS Url #{url}"
-        yield url
+        handle_allowed_errors do
+          yield url
+        end
       }
-      logger.debug "Yielding HTTP Redirected Url #{redirected_http_url}"
-      yield redirected_http_url
+      handle_allowed_errors do
+        logger.debug "Yielding HTTP Redirected Url #{redirected_http_url}"
+        yield redirected_http_url
+      end
     end
 
     def formatted_https_urls
@@ -71,5 +67,11 @@ module Autodiscover
       end.to_xml
     end
 
+    def handle_allowed_errors
+      yield
+    rescue SocketError, Errno::EHOSTUNREACH, Errno::ENETUNREACH, Errno::ECONNREFUSED, HTTPClient::ConnectTimeoutError
+    rescue OpenSSL::SSL::SSLError
+      raise if !options[:ignore_ssl_errors]
+    end
   end
 end
