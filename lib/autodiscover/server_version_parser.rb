@@ -16,7 +16,8 @@ module Autodiscover
       },
       15 => {
         0 => "Exchange2013",
-        1 => "Exchange2013_SP1",
+        1 => "Exchange2016",
+        20 => "Exchange2017"
       }
     }
 
@@ -38,7 +39,7 @@ module Autodiscover
 
     def exchange_version
       v = VERSIONS[major][minor]
-      v.nil? ? VERIONS[8][0] : v
+      v.nil? ? VERSIONS[8][0] : v
     end
 
   end
