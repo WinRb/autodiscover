@@ -17,3 +17,4 @@
 mkmf.log
 scratch.rb
 *.sw[op]
+.idea
