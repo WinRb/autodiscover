@@ -70,6 +70,7 @@ module Autodiscover
     def handle_allowed_errors
       yield
     rescue SocketError, Errno::EHOSTUNREACH, Errno::ENETUNREACH, Errno::ECONNREFUSED, HTTPClient::ConnectTimeoutError
+    rescue Errno::EADDRNOTAVAIL
     rescue OpenSSL::SSL::SSLError
       raise if !options[:ignore_ssl_errors]
     end

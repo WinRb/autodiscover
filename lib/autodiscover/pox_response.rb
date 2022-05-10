@@ -17,16 +17,21 @@ module Autodiscover
     end
 
     def exch_proto
-      @exch_proto ||= (response["Account"]["Protocol"].select{|p| p["Type"] == "EXCH"}.first || {})
+      @exch_proto ||= protocols.find { |p| p["Type"] == "EXCH" } || {}
     end
 
     def expr_proto
-      @expr_proto ||= (response["Account"]["Protocol"].select{|p| p["Type"] == "EXPR"}.first || {})
+      @expr_proto ||= protocols.find { |p| p["Type"] == "EXPR" } || {}
     end
 
     def web_proto
-      @web_proto ||= (response["Account"]["Protocol"].select{|p| p["Type"] == "WEB"}.first || {})
+      @web_proto ||= protocols.find { |p| p["Type"] == "WEB" } || {}
     end
 
+    private
+
+    def protocols
+      response["Account"]["Protocol"] || []
+    end
   end
 end
