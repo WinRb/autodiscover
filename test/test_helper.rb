@@ -7,7 +7,7 @@ require 'mocha/mini_test'
 TEST_DIR = File.dirname(__FILE__)
 
 # Helpers for the minitest specs.
-class MiniTest
+module MiniTest
   # Spec helpers.
   class Spec
     def load_sample(name)

@@ -38,8 +38,8 @@ describe Autodiscover::PoxRequest do
     it 'keeps trying if :ignore_ssl_errors is set' do
       http.expects(:get).once.returns(OpenStruct.new(headers: { 'Location' => 'http://example.local' }, status: 302))
       http.expects(:post).times(3).raises(OpenSSL::SSL::SSLError, 'Test Error')
-        .then.raises(OpenSSL::SSL::SSLError, 'Test Error')
-        .then.raises(Errno::ENETUNREACH, 'Test Error')
+          .then.raises(OpenSSL::SSL::SSLError, 'Test Error')
+          .then.raises(Errno::ENETUNREACH, 'Test Error')
       inst = _class.new(client, ignore_ssl_errors: true)
       _(inst.autodiscover).must_be_nil
     end

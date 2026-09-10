@@ -5,7 +5,7 @@ module Autodiscover
   # Parses the hex ServerVersion from a POX response into an Exchange version.
   class ServerVersionParser
     VERSIONS = {
-       8 => {
+      8  => {
         0 => 'Exchange2007',
         1 => 'Exchange2007_SP1',
         2 => 'Exchange2007_SP1',
