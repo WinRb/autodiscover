@@ -1,0 +1,32 @@
+plugins:
+  - rubocop-rake
+
+AllCops:
+  TargetRubyVersion: 3.0
+  SuggestExtensions: true
+  NewCops: disable
+
+Gemspec/RequireMFA:
+  Enabled: true
+
+# required_ruby_version is intentionally left at >= 2.1.0 (library still
+# supports older rubies); do not force it to match TargetRubyVersion.
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19
+  EnforcedShorthandSyntax: never

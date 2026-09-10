@@ -1,14 +1,17 @@
-require "autodiscover/version"
-require "nokogiri"
-require "nori"
-require "httpclient"
-require "logging"
+# frozen_string_literal: true
 
+require 'autodiscover/version'
+require 'nokogiri'
+require 'nori'
+require 'httpclient'
+require 'logging'
+
+# Ruby client for Microsoft's Autodiscover Service.
 module Autodiscover
-  Logging.logger["Autodiscover"].level = :info
+  Logging.logger['Autodiscover'].level = :info
 
   def self.logger
-    Logging.logger["Autodiscover"]
+    Logging.logger['Autodiscover']
   end
 
   def logger
@@ -16,8 +19,8 @@ module Autodiscover
   end
 end
 
-require "autodiscover/errors"
-require "autodiscover/client"
-require "autodiscover/pox_request"
-require "autodiscover/pox_response"
-require "autodiscover/server_version_parser"
+require 'autodiscover/errors'
+require 'autodiscover/client'
+require 'autodiscover/pox_request'
+require 'autodiscover/pox_response'
+require 'autodiscover/server_version_parser'
