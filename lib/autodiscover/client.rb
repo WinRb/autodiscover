@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
+# Ruby client for Microsoft's Autodiscover Service.
 module Autodiscover
+  # Performs Autodiscover lookups against a Microsoft Exchange environment.
   class Client
     DEFAULT_HTTP_TIMEOUT = 10
     attr_reader :domain, :email, :http
@@ -12,7 +16,7 @@ module Autodiscover
     #   the one parsed from the e-mail.
     def initialize(email:, password:, username: nil, domain: nil, connect_timeout: DEFAULT_HTTP_TIMEOUT)
       @email = email
-      @domain = domain || @email.split("@").last
+      @domain = domain || @email.split('@').last
       @http = HTTPClient.new
       @http.connect_timeout = connect_timeout if connect_timeout
       @username = username || email
@@ -29,6 +33,5 @@ module Autodiscover
         raise Autodiscover::ArgumentError, "Not a valid autodiscover type (#{type})."
       end
     end
-
   end
 end
