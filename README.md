@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/WinRb/autodiscover.svg?branch=master)](https://travis-ci.org/WinRb/autodiscover)
+[![CI](https://github.com/WinRb/autodiscover/actions/workflows/ci.yml/badge.svg)](https://github.com/WinRb/autodiscover/actions/workflows/ci.yml)
 
 Autodiscover
 ============
@@ -64,13 +64,13 @@ client.autodiscover(ignore_ssl_errors: true)
 Installation
 ------------
 
-### Configuring a Rails App to use the latest GitHub master version
+### Configuring a Rails App to use the latest GitHub main version
 
-	  gem 'autodiscover', :git => 'git://github.com/WinRb/autodiscover.git'
+	  gem 'autodiscover', :git => 'https://github.com/WinRb/autodiscover.git'
 
-### To install the latest development version from the GitHub master
+### To install the latest development version from the GitHub main
 
-	  git clone http://github.com/WinRb/autodiscover.git
+	  git clone https://github.com/WinRb/autodiscover.git
 	  cd autodiscover
 	  gem build autodiscover.gemspec
 	  sudo gem install autodiscover-<version>.gem
@@ -82,4 +82,4 @@ Limitations:
 
 * Doesn't support querying the DNS for SRV Records
 
-Please submit additional bugs and issues here [http://github.com/WinRb/autodiscover/issues](http://github.com/WinRb/autodiscover/issues)
+Please submit additional bugs and issues here [https://github.com/WinRb/autodiscover/issues](https://github.com/WinRb/autodiscover/issues)
