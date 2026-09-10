@@ -14,10 +14,10 @@ describe Autodiscover::PoxRequest do
       request_body = <<~REQUEST_XML
         <?xml version="1.0"?>
         <Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
-        <Request>
-        <EMailAddress>test@example.local</EMailAddress>
-        <AcceptableResponseSchema>http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a</AcceptableResponseSchema>
-        </Request>
+          <Request>
+            <EMailAddress>test@example.local</EMailAddress>
+            <AcceptableResponseSchema>http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a</AcceptableResponseSchema>
+          </Request>
         </Autodiscover>
       REQUEST_XML
       http.expects(:post).with(
