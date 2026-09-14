@@ -8,7 +8,7 @@ require 'logger' unless defined?(Logger)
 
 # Ruby client for Microsoft's Autodiscover Service.
 module Autodiscover
-  @logger = Logger.new(STDOUT)
+  @logger = Logger.new($stdout)
   @logger.level = Logger::INFO
 
   def self.logger
