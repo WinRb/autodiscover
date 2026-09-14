@@ -7,4 +7,7 @@ module Autodiscover
 
   # Raised when invalid arguments are given.
   class ArgumentError < Error; end
+
+  # Raised when the server version cannot be determined.
+  class VersionError < Error; end
 end
