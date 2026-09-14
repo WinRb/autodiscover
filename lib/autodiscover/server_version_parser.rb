@@ -18,9 +18,9 @@ module Autodiscover
         3 => 'Exchange2010_SP2'
       },
       15 => {
-        0 => 'Exchange2013', # Minor builds starting from 847 are Exchange2013_SP1
-        1 => 'Exchange2016',
-        2 => 'Exchange2019',
+        0  => 'Exchange2013', # Minor builds starting from 847 are Exchange2013_SP1
+        1  => 'Exchange2016',
+        2  => 'Exchange2019',
         20 => 'Exchange2016' # This is Office365
       }
     }.freeze
