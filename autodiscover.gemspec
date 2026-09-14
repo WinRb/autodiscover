@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = 'The Autodiscover Service provides information about a ' \
                   'Microsoft Exchange environment such as service URLs, ' \
                   'versions and many other attributes.'
-  # Note: this floor is intentionally conservative for now. CI starts at Ruby 3.0 and older
+  # NOTE: this floor is intentionally conservative for now. CI starts at Ruby 3.0 and older
   # Rubies can't be validated, so it will likely move to 3.0 at the next release.
   s.required_ruby_version = '>= 2.1.0'
 
