@@ -4,7 +4,7 @@ require 'autodiscover/version'
 require 'nokogiri'
 require 'nori'
 require 'httpclient'
-require 'logging'
+require 'logger' unless defined?(Logger)
 
 # Ruby client for Microsoft's Autodiscover Service.
 module Autodiscover
