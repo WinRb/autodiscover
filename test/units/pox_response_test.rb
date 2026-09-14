@@ -21,7 +21,7 @@ describe Autodiscover::PoxResponse do
 
   describe '#exchange_version' do
     it 'returns an Exchange version usable for EWS' do
-      _(_class.new(response).exchange_version).must_equal 'Exchange2013_SP1'
+      _(_class.new(response).exchange_version).must_equal 'Exchange2016'
     end
   end
 

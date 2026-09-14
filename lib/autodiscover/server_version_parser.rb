@@ -18,8 +18,10 @@ module Autodiscover
         3 => 'Exchange2010_SP2'
       },
       15 => {
-        0 => 'Exchange2013',
-        1 => 'Exchange2013_SP1'
+        0  => 'Exchange2013', # Minor builds starting from 847 are Exchange2013_SP1
+        1  => 'Exchange2016',
+        2  => 'Exchange2019',
+        20 => 'Exchange2016' # This is Office365
       }
     }.freeze
 
@@ -40,8 +42,11 @@ module Autodiscover
     end
 
     def exchange_version
-      v = VERSIONS[major][minor]
-      v.nil? ? VERIONS[8][0] : v
+      version = VERSIONS[major][minor]
+      raise VersionError, "Unknown version string: #{@version}" unless version
+
+      version = 'Exchange2013_SP1' if version == 'Exchange2013' && build >= 847
+      version
     end
   end
 end
