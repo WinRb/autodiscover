@@ -24,7 +24,8 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_runtime_dependency 'httpclient'
-  s.add_runtime_dependency 'logging'
+  # logger is no longer a bundled gem on Ruby 4.0
+  s.add_runtime_dependency 'logger'
   s.add_runtime_dependency 'nokogiri'
   s.add_runtime_dependency 'nori'
 

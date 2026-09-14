@@ -4,18 +4,19 @@ require 'autodiscover/version'
 require 'nokogiri'
 require 'nori'
 require 'httpclient'
-require 'logging'
+require 'logger' unless defined?(Logger)
 
 # Ruby client for Microsoft's Autodiscover Service.
 module Autodiscover
-  Logging.logger['Autodiscover'].level = :info
+  @logger = Logger.new($stdout)
+  @logger.level = Logger::INFO
 
   def self.logger
-    Logging.logger['Autodiscover']
+    @logger
   end
 
   def logger
-    @logger ||= Logging.logger[self.class.name]
+    @logger ||= Autodiscover.logger
   end
 end
 
