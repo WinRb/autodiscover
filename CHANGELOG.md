@@ -1,4 +1,4 @@
-*1.0.3* (unreleased)
+*1.0.3* (2026-11-11)
 
 * Detect Exchange 2013 SP1 by build number; add Exchange 2016/2019 version mappings
 * Replace the `logging` gem with stdlib `logger`
