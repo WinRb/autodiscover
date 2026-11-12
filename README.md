@@ -9,6 +9,10 @@ The Autodiscover Service is a component of the Microsoft Exchange architecture. 
 
 This library implements Microsoft's "Autodiscover HTTP Service Protocol Specification" to discover the endpoint for an Autodiscover server that supports a specified e-mail address and Microsoft's "Autodiscover Publishing and Lookup Protocol Specification" to get URLs and settings that are required to access Web services available from Exchange servers.
 
+## Supported Ruby Versions
+
+Ruby 3.1 or higher is supported. The gem can still be installed on Ruby 3.0, but 3.0 is end-of-life and not tested.
+
 Dependencies
 ------------
 
